@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express ();
 var path = require('path');
+var childProcess = require('child_process');
+
+childProcess.fork(__dirname + '/readTracks.js');
 
 app.use(express.static(path.join(__dirname,'public')));
 
