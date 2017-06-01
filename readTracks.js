@@ -5,11 +5,11 @@ fs.readdir(p,function(err,files){
 	if(err) {
 		throw err;
 	}
-	fs.writeFile("./public/tracks.json",JSON.stringify(files), function(err){
+	fs.writeFile("./public/data/tracks.json",JSON.stringify(files), function(err){
 		if (err){
 			throw err;
 		}
-		console.log("File created");
+		console.log("Tracks JSON created succesfully");
 	});
 });
 	
