@@ -2,7 +2,7 @@ $(function() {
 	var player = $('#player');	
 	var currentTrack = Cookie.get('track',0);
 	var track = ['audio1.mp3','audio2.mp3'];
-	player[0].src = track[currentTrack];
+	player[0].src = 'tracks/' + track[currentTrack];
 	player[0].currentTime = Cookie.get('time',0);
 
 	player.bind('pause', function(){
