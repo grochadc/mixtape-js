@@ -1,0 +1,37 @@
+.button{
+	background-color: #BBBBBB;
+	border:none;
+	color:white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+	width:100px;
+	height:60px;
+	border-radius: 10px;
+/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bbbbbb+0,959595+100 */
+background: #bbbbbb; /* Old browsers */
+background: -moz-linear-gradient(top, #bbbbbb 0%, #959595 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #bbbbbb 0%,#959595 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #bbbbbb 0%,#959595 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bbbbbb', endColorstr='#959595',GradientType=0 ); /* IE6-9 */
+}
+
+.arrow-right {
+	width: 0;
+	height: 0;
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+
+	border-left: 10px solid white;
+	float: left;
+}
+
+.square {
+	width:15;
+	height:15;
+	background:white;
+	float: left;
+}
