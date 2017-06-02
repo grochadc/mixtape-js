@@ -14,6 +14,19 @@ $(function() {
 		setupPlayer(); //execute the rest of the code when the async $.getJSON is finished
 	});
 
+	//Get the metadata for the playlist and append it to the #tracklist div
+	$.getJSON("../data/metadata.json", function(data){
+		var items = [];
+		$.each( data, function( key, val ){
+			items.push("<li id='"+ key +"'>" + val.artist  + " - " + val.title + "</li>");
+		});
+
+		$("<ol/>",{
+			"class": "my-new-list",
+			html: items.join( "" )
+		}).appendTo( "#tracklist" );
+	});
+
 	//Create a function that sets up the player source, time and events
 	function setupPlayer(){
 		var currentTrackSource = './tracks/' + tracks[currentTrack];
