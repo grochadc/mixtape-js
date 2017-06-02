@@ -19,13 +19,23 @@ fs.readdir(tracksPath,function(err,files){
 	var tracksMetadata = [];
 	files.forEach(function(trackName){
 		var trackFile = nodeID3.read(tracksPath + trackName);
-		var metadata = {
-			"filename" : trackName,
-			"title" : trackFile.title,
-			"artist" : trackFile.artist
-		};
-		tracksMetadata.push(metadata);
+		
+		//If the track returns metadata push it to the array
+		if(trackFile.title && trackFile.artist){
+			var metadata = {
+				"filename" : trackName,
+				"title" : trackFile.title,
+				"artist" : trackFile.artist
+			};
+			tracksMetadata.push(metadata);
+		}
+
+		//If no metadata is found ignore and log it to the console
+		else {
+			console.log(trackName + " doesn't have metadata. Ignoring.");
+		}
 	});
+
 	fs.writeFile(path.join(dataPath, 'metadata.json'), JSON.stringify(tracksMetadata), function(err){
 		if(err){
 			throw err;
