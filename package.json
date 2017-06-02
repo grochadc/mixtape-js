@@ -1,15 +1,26 @@
 {
   "name": "mixtape-js",
   "version": "1.0.0",
-  "description": "",
+  "description": "A simple web mixtape emulator.",
   "main": "server.js",
+  "dependencies": {
+    "express": "^4.15.3",
+    "express-fileupload": "^0.1.3",
+    "node-id3": "0.0.9"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grochadc/mixtape-js.git"
+  },
+  "author": "Gonzalo Rocha",
   "license": "ISC",
-  "dependencies": {
-    "express": "^4.15.3"
-  }
+  "bugs": {
+    "url": "https://github.com/grochadc/mixtape-js/issues"
+  },
+  "homepage": "https://github.com/grochadc/mixtape-js#readme"
 }
