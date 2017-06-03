@@ -2,14 +2,14 @@ $(function() {
 
 	// Initialize the player, tracks array as well as track number and time
 	var player = $('#player');
-	var tracks = []; //This array will be populated with the content of tracks.JSON
+	window.tracks = []; //This array will be populated with the filenames from metadata.json
 	var currentTrack = Cookie.get('track',0);
 	var currentTrackTime = Cookie.get('time',0); 
 
 	//jQuery AJAX to push the JSON from tracks.json to the tracks array defined earlier.
-	$.getJSON("../data/tracks.json", function(data){
+	$.getJSON("../data/metadata.json", function(data){
 		$.each(data, function(key, val){
-			tracks.push(val);
+			tracks.push(val.filename);
 		});
 		setupPlayer(); //execute the rest of the code when the async $.getJSON is finished
 	});
