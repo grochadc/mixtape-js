@@ -32,6 +32,12 @@ fs.readdir(tracksPath,function(err,files){
 
 		//If no metadata is found ignore and log it to the console
 		else {
+			var filename = {
+				  "filename" : trackName
+			};
+
+			tracksMetadata.push(filename);
+
 			console.log(trackName + " doesn't have metadata. Ignoring.");
 		}
 	});
