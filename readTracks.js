@@ -19,9 +19,10 @@ fs.readdir(tracksPath,function(err,files){
 	var tracksMetadata = [];
 	files.forEach(function(trackName){
 		var trackFile = nodeID3.read(tracksPath + trackName);
-		
+
+
 		//If the track returns metadata push it to the array
-		if(trackFile.title && trackFile.artist){
+		if (trackFile.title && trackFile.artist){
 			var metadata = {
 				"filename" : trackName,
 				"title" : trackFile.title,
@@ -31,7 +32,7 @@ fs.readdir(tracksPath,function(err,files){
 		}
 
 		//If no metadata is found ignore and log it to the console
-		else {
+		else if (trackName.charAt(0) != "."){
 			var filename = {
 				  "filename" : trackName
 			};
