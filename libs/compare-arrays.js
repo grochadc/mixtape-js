@@ -5,9 +5,9 @@ module.exports = {
 		var propertyB = b[Object.keys(b)[0]].toUpperCase();
 		
 		var comparison = 0;
-		if (genreA > genreB) {
+		if (propertyA > propertyB) {
 			comparison = 1;
-		} else if (genreA < genreB) {
+		} else if (propertyA < propertyB) {
 		         comparison = -1;
 		}
 		return comparison;
