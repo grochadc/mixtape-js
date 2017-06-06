@@ -1,6 +1,8 @@
 var fs = require('fs');
 var nodeID3 = require('node-id3');
 var path = require('path');
+var sorting = require('./libs/compare-arrays.js');
+
 var tracksPath = './public/tracks/';
 var dataPath = './public/data/';
 
@@ -36,10 +38,24 @@ fs.readdir(tracksPath,function(err,files){
 		}
 	});
 
-	fs.writeFile(path.join(dataPath, 'metadata.json'), JSON.stringify(tracksMetadata), function(err){
-		if(err){
-			throw err;
+	fs.readFile(path.join(dataPath, 'metadata.json'),'utf8',function(err,data){
+		if(err) throw err;
+		var dataObj = JSON.parse(data);
+		var dataSorted = dataObj.slice(0).sort(sorting.compare);
+
+		if (dataObj.length == tracksMetadata.length) {
+			if(JSON.stringify(dataSorted) == JSON.stringify(tracksMetadata)){
+				console.log('Content in public/tracks/ and metadata.json are the same. Not writing file');
+			}
 		}
-		console.log("Tracks Metadata JSON created succesfully");
+		else if(dataObj.length != tracksMetadata.length){
+			fs.writeFile(path.join(dataPath, 'metadata.json'), JSON.stringify(tracksMetadata), function(err){
+				if(err){
+					throw err;
+				}
+				console.log("Tracks Metadata JSON created succesfully");
+			});
+		}
 	});
+
 });
