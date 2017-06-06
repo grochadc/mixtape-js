@@ -8,13 +8,6 @@ fs.readdir(tracksPath,function(err,files){
 	if(err) {
 		throw err;
 	}
-	//Read the tracks filenames
-	fs.writeFile(path.join(dataPath,"tracks.json"),JSON.stringify(files), function(err){
-		if (err){
-			throw err;
-		}
-		console.log("Tracks JSON created succesfully");
-	});
 	//Read the tracks metadata
 	var tracksMetadata = [];
 	files.forEach(function(trackName){
