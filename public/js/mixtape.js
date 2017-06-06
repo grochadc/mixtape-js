@@ -12,6 +12,7 @@ $(function() {
 			tracks.push(val.filename);
 		});
 		setupPlayer(); //execute the rest of the code when the async $.getJSON is finished
+		console.log('player set up');
 	});
 
 	//Get the metadata for the playlist and append it to the #tracklist div
