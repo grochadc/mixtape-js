@@ -1,10 +1,12 @@
 $(function() {
 
+	nw.Window.get().showDevTools();
+
 	// Initialize the player, tracks array as well as track number and time
 	var player = $('#player');
-	window.tracks = []; //This array will be populated with the filenames from metadata.json
-	var currentTrack = Cookie.get('track',0);
-	var currentTrackTime = Cookie.get('time',0); 
+	tracks = []; //This array will be populated with the filenames from metadata.json
+	currentTrack = localStorage.track === undefined ? 0 : localStorage.track;
+	currentTrackTime = localStorage.time === undefined ? 0 : localStorage.time;
 
 	//jQuery AJAX to push the JSON from tracks.json to the tracks array defined earlier.
 	$.getJSON("../data/metadata.json", function(data){
@@ -30,15 +32,16 @@ $(function() {
 
 	//Create a function that sets up the player source, time and events
 	function setupPlayer(){
-		var currentTrackSource = './tracks/' + tracks[currentTrack];
+		window.currentTrackSource = './tracks/' + tracks[currentTrack];
 		player[0].src = currentTrackSource;
 		player[0].currentTime = currentTrackTime;
 
 		player.bind('pause', function(){
 			timeStopped = player[0].currentTime;
 			console.log('Player paused at ' + timeStopped + ' track ' + currentTrack);
-			Cookie.set('track',currentTrack);
-			Cookie.set('time',timeStopped);
+			console.log(localStorage);
+			localStorage.track = currentTrack;
+			localStorage.time = timeStopped;
 		});
 
 		player.bind('ended', function(){
@@ -55,4 +58,4 @@ $(function() {
 			}
 		});
 	}
-});
+})
