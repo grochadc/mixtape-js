@@ -1,0 +1,105 @@
+<html>
+	<head>
+
+	<!---Scripts (jQuery, Cookies and main) -->
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script src="js/cookies.js"></script>
+	<script src="main.js"></script>
+
+	<!---Stylesheets (Fonts, Cassette Drawing and Button Styling -->
+	<link href='https://fonts.googleapis.com/css?family=Lato:900,400|Shadows+Into+Light' rel='stylesheet' type='text/css'>
+	<link href="css/cassette.css" rel="stylesheet" type="text/css">
+	<link href="css/style.css" rel="stylesheet" type="text/css">
+
+	<title>Mixtape js </title>
+	</head>
+
+	<body>
+		<h1 align="center">Welcome to Mixtape js!</h1>
+		<div align="center">
+		<audio id="player">
+		</audio>
+		<button class="button" onclick="document.getElementById('player').play()"><div class="arrow-right"></div>Play</button>
+		<button class="button" onclick="document.getElementById('player').pause()"><div class="square"></div>Stop</button>
+		</div>
+
+		<p></p>
+
+<div class="cassetteOuter">
+
+    <span class="screw screw1"><span class="screwInner"></span></span>
+    <span class="screw screw2"><span class="screwInner"></span></span>
+    <span class="screw screw3"><span class="screwInner"></span></span>
+    <span class="screw screw4"><span class="screwInner"></span></span>
+
+    <div class="stickerOuter">
+      <div class="sticker">
+        <span class="a-side">A</span>
+        <p class="cursive">Awesome Mixtape!</p>
+        <span class="stripe"></span>
+        <span class="c90">D-C90</span>
+        <span class="logo">T.F.H.®</span>
+        <div class="middle clearfix">
+          <span class="circle one">
+            <span class="teethBox">
+              <span class="teeth"></span>
+              <span class="teeth"></span>
+              <span class="teeth"></span>
+            </span>
+          </span>
+          <div class="window">
+            <span class="reelOne"></span>
+            <span class="reelTwo"></span>
+          </div>
+          <span class="circle two">
+            <span class="teethBox">
+              <span class="teeth"></span>
+              <span class="teeth"></span>
+              <span class="teeth"></span>
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cassetteBottom">
+      <span class="screw screw5"><span class="screwInner"></span></span>
+      <span class="bottomShadow">
+        <span class="bottomHoles one"></span>
+        <span class="bottomHoles two"></span>
+        <span class="bottomHoles three"></span>
+      </span>
+      <span class="holes one"></span>
+      <span class="holes two"></span>
+    </div>
+
+  </div>
+
+<div class="linerNotes">
+    <div class="linerNotesTop clearfix">
+      <span class="boxDesc">TFH D-C90 90min. @ 1-7/8 ips(2 × 45min.)</span>
+      <div class="infoBoxes clearfix">
+        <span class="box1">Tape Selector</span>
+        <span class="box2">Normal</span>
+        <span class="box3">Bias-Normal</br>EQ-120µS</span>
+        <span class="boxCopyright">©1972-1977 TFH Electronics Co.,Ltd.</span>
+      </div>
+    </div>
+    <div class="linerNotesSpine"><span class="spineTitle">D-<span class="green">C90</span> TFH</span></div>
+    <div class="linerNotesMainContent clearfix">
+      <span class="side">A</span>
+      <span class="side">B</span>
+      <div class="linerNotesMainContentInner">
+        <h1>Tracklist</h1>
+	<div id="tracklist"></div>
+      </div>
+    </div>
+    <div class="linerNotesBottom">
+      <p class="black">Dynamic Cassette</p>
+      <p class="white">Precision Cassette Mechanism</p>
+      <p class="title">D-<span class="green">C90</span> TFH®</p>
+    </div>
+  </div>
+
+	</body>
+</html>
