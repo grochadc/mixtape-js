@@ -1,6 +1,1 @@
 node_modules/
-public/data/*
-public/tracks/*
-
-!public/data/.gitkeep
-!public/tracks/.gitkeep
