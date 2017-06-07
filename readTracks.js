@@ -1,8 +1,8 @@
 var fs = require('fs');
 var nodeID3 = require('node-id3');
 var path = require('path');
-var tracksPath = './public/tracks/';
-var dataPath = './public/data/';
+var tracksPath = './app/tracks/';
+var dataPath = './app/data/';
 
 fs.readdir(tracksPath,function(err,files){
 	if(err) {
