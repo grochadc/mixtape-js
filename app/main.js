@@ -14,7 +14,6 @@ $(function() {
 			tracks.push(val.filename);
 		});
 		setupPlayer(); //execute the rest of the code when the async $.getJSON is finished
-		console.log('player set up');
 	});
 
 	//Get the metadata for the playlist and append it to the #tracklist div
@@ -40,18 +39,22 @@ $(function() {
 			timeStopped = player[0].currentTime;
 			console.log('Player paused at ' + timeStopped + ' track ' + currentTrack);
 			console.log(localStorage);
-			localStorage.tracks = currentTrack;
+			localStorage.track = currentTrack;
 			localStorage.time = timeStopped;
 		});
 
 		player.bind('ended', function(){
 			if(currentTrack<=tracks.length){
+				console.log('Still songs to play');
+
 				currentTrack++;
 				localStorage.track = currentTrack;
 
-				console.log('Still songs to play');
-				console.log('currentTrack: ' + currentTrack);
-				console.log('currentTrackSource: ' + currentTrackSource);
+
+				currentTrackSource = './tracks/' + tracks[currentTrack];
+
+				debugInfo();
+
 				player[0].src = currentTrackSource;
 				player[0].play();
 			}
@@ -61,6 +64,7 @@ $(function() {
 				localStorage.track = 0;
 				localStorage.time = 0;
 			}
+		console.log('player set up');
 		});
 	};
 
@@ -71,9 +75,13 @@ $(function() {
 		console.log('currentTrackSource: ' + currentTrackSource);
 		console.log('player: ' + JSON.stringify(player));
 		console.log('localStorage: ' + JSON.stringify(localStorage[0]));
+		console.log('tracks[currentTrack]: ' + tracks[currentTrack] );
+		console.log('tracks.length: ',tracks.length);
+		console.log('currentTrack <= tracks.length: ',Boolean(currentTrack <= tracks.length));
 	};
 
 	window.endTrack = function(){
 		//Code to force the current track to end on Console
+		player.trigger("ended");
 	};
 });
