@@ -7,23 +7,17 @@ $(function() {
 	window.currentTrack = Cookie.get('track',0);
 	window.currentTrackTime = Cookie.get('time',0);
 
-	//jQuery AJAX to push the JSON from tracks.json to the tracks array defined earlier.
-	$.getJSON("../data/metadata.json", function(data){
-
-		console.log('Entered getJSON', data);
-		$.each(data, function(key, val){
-			console.log('Entered .each. Iterator',key,val);
-			tracks.push(val.filename);
-		});
-		setupPlayer(); //execute the rest of the code when the async $.getJSON is finished
-	});
-
 	//Get the metadata for the playlist and append it to the #tracklist div
 	$.getJSON("../data/metadata.json", function(data){
+		console.log('Entered getJSON');
 		var items = [];
 		$.each( data, function( key, val ){
+			console.log('Entered .each Iterator: ',key,val);
+			tracks.push(val.filename);
 			items.push("<li id='"+ key +"'>" + val.artist  + " - " + val.title + "</li>");
 		});
+
+		setupPlayer(); //execute the rest of the code when the async $.getJSON is finished
 
 		$("<ol/>",{
 			"class": "my-new-list",
