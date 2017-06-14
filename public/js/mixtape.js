@@ -1,18 +1,20 @@
 $(function() {
 
+	console.log('To show debugging information call debugInfo() or set localStorage.debug to true');
 
 	// Initialize the player, tracks array as well as track number and time
 	var player = $('#player');
         window.tracks = []; //This array will be populated with the filenames from metadata.json
 	window.currentTrack = Cookie.get('track',0);
 	window.currentTrackTime = Cookie.get('time',0);
+	debugging = localStorage.debug;
 
 	//Get the metadata for the playlist and append it to the #tracklist div
 	$.getJSON("../data/metadata.json", function(data){
-		console.log('Entered getJSON');
+		if(debugging) console.log('Entered getJSON');
 		var items = [];
 		$.each( data, function( key, val ){
-			console.log('Entered .each Iterator: ',key,val);
+			if(debugging) console.log('Entered .each Iterator: ',key,val);
 			tracks.push(val.filename);
 			items.push("<li id='"+ key +"'>" + val.artist  + " - " + val.title + "</li>");
 		});
@@ -34,14 +36,14 @@ $(function() {
 		player.bind('pause', function(){
 			timeStopped = player[0].currentTime;
 			console.log('Player paused at ' + timeStopped + ' track ' + currentTrack);
-			console.log(document.cookie);
+			if(debugging) console.log(document.cookie);
 			Cookie.set('track',currentTrack);
 			Cookie.set('time',currentTrackTime);
 		});
 
 		player.bind('ended', function(){
 			if(currentTrack<=tracks.length){
-				console.log('Still songs to play');
+				if(debugging) console.log('Still songs to play');
 
 				currentTrack++;
 
@@ -49,18 +51,16 @@ $(function() {
 
 				currentTrackSource = './tracks/' + tracks[currentTrack];
 
-				debugInfo();
-
 				player[0].src = currentTrackSource;
 				player[0].play();
 			}
 
 			else{
-				console.log('Reached the end of the mixtape');
+				if(debugging) console.log('Reached the end of the mixtape');
 				Cookie.set('track',0);
 				Cookie.set('time',0);
 			}
-		console.log('player set up');
+		if(debugging) console.log('player set up');
 		});
 	};
 
