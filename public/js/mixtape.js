@@ -29,8 +29,8 @@ $(function() {
 
 
 		$("<ol/>",{
-			"class": "my-new-list",
-			html: items.join( "" )
+			"class": "trackList",
+			html: items.slice(0,Number(currentTrack)+1).join( "" )
 		}).appendTo( "#tracklist" );
 
 		player.bind('pause', function(){
@@ -46,7 +46,7 @@ $(function() {
 				console.log('Still songs to play');
 
 				currentTrack++;
-
+				$(".trackList").append(items[currentTrack]);
 				Cookie.set('track', currentTrack);
 
 				currentTrackSource = './tracks/' + tracks[currentTrack];
