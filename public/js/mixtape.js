@@ -40,7 +40,7 @@ $(function() {
 			console.log('Player paused at ' + timeStopped + ' track ' + currentTrack);
 			if(debugging) console.log(document.cookie);
 			Cookie.set('track',currentTrack);
-			Cookie.set('time',currentTrackTime);
+			Cookie.set('time',timeStopped);
 		});
 
 		player.bind('ended', function(){
