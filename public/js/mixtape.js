@@ -19,19 +19,21 @@ $(function() {
 			items.push("<li id='"+ key +"'>" + val.artist  + " - " + val.title + "</li>");
 		});
 
-		setupPlayer(); //execute the rest of the code when the async $.getJSON is finished
+		setupPlayer(items); //execute the rest of the code when the async $.getJSON is finished
 
-		$("<ol/>",{
-			"class": "my-new-list",
-			html: items.join( "" )
-		}).appendTo( "#tracklist" );
 	});
 
 	//Create a function that sets up the player source, time and events
-	window.setupPlayer = function(){
+	window.setupPlayer = function(items){
 		window.currentTrackSource = './tracks/' + tracks[currentTrack];
 		player[0].src = currentTrackSource;
 		player[0].currentTime = currentTrackTime;
+
+
+		$("<ol/>",{
+			"class": "trackList",
+			html: items.slice(0,Number(currentTrack)+1).join( "" )
+		}).appendTo( "#tracklist" );
 
 		player.bind('pause', function(){
 			timeStopped = player[0].currentTime;
@@ -46,7 +48,7 @@ $(function() {
 				if(debugging) console.log('Still songs to play');
 
 				currentTrack++;
-
+				$(".trackList").append(items[currentTrack]);
 				Cookie.set('track', currentTrack);
 
 				currentTrackSource = './tracks/' + tracks[currentTrack];
